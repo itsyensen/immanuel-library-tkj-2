@@ -8,19 +8,10 @@
 </head>
 <body>
   <?php
-  $user = [
-      "id"    => 1,
-      "name"  => "Budi Santoso",
-      "email" => "budi.santoso@siswa.ski.sch.id",
-      "role"  => "member",
-  ];
+  require_once __DIR__ . '/../../repositories/user-repository.php';
 
-  $profile = [
-      "user_id" => 1,
-      "phone"   => "0812-3456-7890",
-      "address" => "Jl. Merdeka No. 21, Pontianak, Kalimantan Barat",
-      "bio"     => "Murid kelas XI TKJ yang gemar membaca novel fiksi dan buku pengembangan diri.",
-  ];
+  $user = getUser();
+  $profile = getProfile();
   ?>
   <div class="app-shell">
 
@@ -34,8 +25,8 @@
     require_once __DIR__ . '/../../components/admin/topbar.php';
     ?>
 
-      <div class="app-content">
-        <form method="" action="">
+        <div class="app-content">
+          <form method="GET" action="../../actions/profile/update.php">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Akun</div>
             <div class="form-row">
@@ -70,8 +61,8 @@
               <textarea id="bio" name="bio" rows="3"><?= $profile['bio'] ?></textarea>
             </div>
             <div class="form-actions">
-              <button type="button" class="btn btn-outline">Batal</button>
-              <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+              <button name="update" type="button" class="btn btn-outline">Batal</button>
+              <button name="update" type="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>
