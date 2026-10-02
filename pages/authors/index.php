@@ -8,7 +8,8 @@
 </head>
 <body>
   <?php
-  $author = ["id" => 1, "name" => "Andrea Hirata", "total_books" => 1];
+  require_once __DIR__ . '/../../repositories/author-repository.php';
+  $authors = getAuthors();
   ?>
   <div class="app-shell">
   
@@ -44,6 +45,7 @@
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($authors as $author) : ?>
               <tr>
                 <td>
                   <div class="cell-primary">
@@ -59,6 +61,7 @@
                   </div>
                 </td>
               </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>
