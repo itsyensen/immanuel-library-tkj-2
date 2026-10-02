@@ -92,7 +92,6 @@
                     class="btn btn-danger btn-sm">Hapus</a>
                   </div>
                 </td>
-              </tr>
             </tbody>
           </table>
         </div>
