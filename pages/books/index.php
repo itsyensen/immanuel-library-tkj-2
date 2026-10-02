@@ -33,7 +33,7 @@
 
       <div class="app-content">
         <div class="toolbar">
-          <form method="" action="" class="toolbar-filters">
+          <form method="get" action="../../actions/books/destroy.php" class="toolbar-filters">
             <div class="search-box">
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -87,7 +87,9 @@
                 <td>
                   <div class="cell-actions">
                     <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm">Hapus</a>
+                    <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" 
+                    onclick="return confirm('Yakin mau hapus buku ini?')" 
+                    class="btn btn-danger btn-sm">Hapus</a>
                   </div>
                 </td>
               </tr>
