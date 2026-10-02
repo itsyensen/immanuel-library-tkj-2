@@ -20,7 +20,7 @@
     ?>
 
       <div class="app-content">
-        <form method="" action="">
+        <form method="get" action="../../actions/categories/store.php">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
             <div class="form-group">
@@ -34,7 +34,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button type="submit" class="btn btn-primary">Simpan Kategori</button>
+              <button name="store" type="submit" class="btn btn-primary">Simpan Kategori</button>
             </div>
           </div>
         </form>
