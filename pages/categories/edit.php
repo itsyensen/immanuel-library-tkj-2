@@ -24,7 +24,7 @@
     ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/categories/update.php">
+        <form method="post" action="../../actions/categories/update.php">
           <input type="hidden" name="id" value="<?= $category['id'] ?>">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
