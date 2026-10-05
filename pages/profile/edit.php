@@ -1,3 +1,7 @@
+<?php
+$activeMenu = 'profile';
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -26,7 +30,7 @@
     ?>
 
         <div class="app-content">
-          <form method="GET" action="../../actions/profile/update.php">
+          <form method="post" action="../../actions/profile/update.php">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Akun</div>
             <div class="form-row">
@@ -61,7 +65,7 @@
               <textarea id="bio" name="bio" rows="3"><?= $profile['bio'] ?></textarea>
             </div>
             <div class="form-actions">
-              <button name="update" type="button" class="btn btn-outline">Batal</button>
+              <button type="button" class="btn btn-outline">Batal</button>
               <button name="update" type="submit" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
