@@ -11,7 +11,7 @@
   // Data kategori & penulis dummy untuk mengisi dropdown/checkbox di form
   require_once __DIR__ . '/../../repositories/category-repository.php';
   require_once __DIR__ . '/../../repositories/author-repository.php';
-  $categories = getCatergories();
+  $categories = getCategories();
   $authors = getAuthors();
   ?>
   <div class="app-shell">
@@ -25,7 +25,7 @@
       ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/books/store.php">
+        <form method="post" action="../../actions/books/store.php">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Buku</div>
             <div class="form-group">
