@@ -20,7 +20,7 @@
     ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/users/store.php">
+        <form method="post" action="../../actions/users/store.php">
           <div class="form-card">
             <div class="form-section-title">Data Pengguna</div>
             <div class="form-row">
