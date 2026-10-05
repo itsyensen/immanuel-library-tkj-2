@@ -1,6 +1,6 @@
 <?php
 
-function getCatergories() {
+function getCategories() {
   
   $categories = [
     ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",        "total_books" => 3],
