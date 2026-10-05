@@ -26,7 +26,7 @@
     ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/authors/update.php">
+        <form method="post" action="../../actions/authors/update.php">
           <input type="hidden" name="id" value="<?= $author['id'] ?>">
           <div class="form-card">
             <div class="form-section-title">Data Penulis</div>
