@@ -20,7 +20,7 @@
     ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/categories/store.php">
+        <form method="post" action="../../actions/categories/store.php">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
             <div class="form-group">
