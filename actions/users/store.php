@@ -1,8 +1,8 @@
 <?php
 
-if(isset($_GET['store']) && ($_SERVER['REQUEST_METHOD'] === 'GET')) {
+if(isset($_POST['store']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
 
-  print_r($_GET);
+  print_r($_POST);
 
 }
 
