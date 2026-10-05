@@ -1,3 +1,7 @@
+<?php
+$activeMenu = 'books';
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -10,38 +14,30 @@
 
 <body>
   <?php
-  $book = [
-    "id" => 1,
-    "title" => "Laskar Pelangi",
-    "category" => "Fiksi",
-    "year" => 2005,
-    "stock" => 12,
-    "authors" => "Andrea Hirata",
-  ];
+  require_once('../../repositories/book-repository.php');
+  $books = getBooks();
   ?>
+
   <div class="app-shell">
-    
+
     <?php require_once __DIR__ . '/../../components/admin/sidebar.php'; ?>
 
     <main class="app-main">
-      
-    <?php
-    $pageTitle = "Manajemen Buku";
-    $pageSubtitle = "Kelola data buku, kategori, dan penulis";
-    require_once __DIR__ . '/../../components/admin/topbar.php';
-    ?>
+
+      <?php
+      $pageTitle = "Manajemen Buku";
+      $pageSubtitle = "Kelola data buku, kategori, dan penulis";
+      require_once __DIR__ . '/../../components/admin/topbar.php';
+      ?>
 
       <div class="app-content">
         <div class="toolbar">
-          <form method="get" action="../../actions/books/destroy.php" class="toolbar-filters">
+          <form method="get" action="" class="toolbar-filters">
             <div class="search-box">
-              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="7" />
-                <path d="m21 21-4.3-4.3" />
-              </svg>
+              ...
               <input type="text" name="search" class="search-input" placeholder="Cari judul buku...">
             </div>
+
             <select name="category" class="filter-select">
               <option value="">Semua Kategori</option>
               <option value="Fiksi">Fiksi</option>
@@ -49,6 +45,7 @@
               <option value="Sejarah">Sejarah</option>
               <option value="Teknologi">Teknologi</option>
             </select>
+
             <button type="submit" class="btn btn-outline btn-sm">Cari</button>
           </form>
           <a href="create.php" class="btn btn-primary">+ Tambah Buku</a>
@@ -66,32 +63,34 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <div class="cell-primary">
-                    <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
-                      </svg></span>
-                    <a href="show.php?id=<?= $book['id'] ?>" style="color:inherit;"><?= $book['title'] ?></a>
-                  </div>
-                </td>
-                <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
-                <td>
-                  <div class="chip-list">
-                    <span class="chip"><?= $book['authors'] ?></span>
-                  </div>
-                </td>
-                <td><?= $book['stock'] ?></td>
-                <td>
-                  <div class="cell-actions">
-                    <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                    <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" 
-                    onclick="return confirm('Yakin mau hapus buku ini?')" 
-                    class="btn btn-danger btn-sm">Hapus</a>
-                  </div>
-                </td>
+              <?php foreach ($books as $book): ?>
+                <tr>
+                  <td>
+                    <div class="cell-primary">
+                      <span class="cell-thumb"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+                        </svg></span>
+                      <a href="show.php?id=<?= $book['id'] ?>" style="color:inherit;"><?= $book['title'] ?></a>
+                    </div>
+                  </td>
+                  <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
+                  <td>
+                    <div class="chip-list">
+                      <span class="chip"><?= $book['authors'][0] ?></span>
+                    </div>
+                  </td>
+                  <td><?= $book['stock'] ?></td>
+                  <td>
+                    <div class="cell-actions">
+                      <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
+                      <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>"
+                        onclick="return confirm('Yakin mau hapus buku ini?')" class="btn btn-danger btn-sm">Hapus</a>
+                    </div>
+                  </td>
+                </tr>
+              <?php endforeach; ?>
             </tbody>
           </table>
         </div>
