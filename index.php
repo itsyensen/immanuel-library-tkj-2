@@ -1,5 +1,7 @@
+
 <?php
 $title = "Beranda - Immanuel Library";
+$activeMenu = 'home';
 ?>
 
 <!DOCTYPE html>
