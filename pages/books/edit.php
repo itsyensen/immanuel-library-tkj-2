@@ -10,7 +10,7 @@
   <?php
   require_once __DIR__ . '/../../repositories/category-repository.php';
   require_once __DIR__ . '/../../repositories/author-repository.php';
-  $categories = getCatergories();
+  $categories = getCategories();
   $authors = getAuthors();
 
   require_once __DIR__ . '/../../repositories/book-repository.php';
@@ -29,7 +29,7 @@
     ?>
 
       <div class="app-content">
-        <form method="get" action="../../actions/books/update.php">
+        <form method="post" action="../../actions/books/update.php">
           <input type="hidden" name="id" value="<?= $book['id'] ?>">
           <div class="form-card" style="margin-bottom:20px;">
             <div class="form-section-title">Data Buku</div>
@@ -53,10 +53,12 @@
                 <input type="number" id="stock" name="stock" value="<?= $book['stock'] ?>">
               </div>
               <div class="form-group">
-                <label for="category_id">Kategori</label>
-                <select id="category_id" name="category_id">
+                <label for="category">Kategori</label>
+                <select id="category" name="category">
                   <?php foreach ($categories as $category): ?>
-                    <option value="<?= $category['id'] ?>" <?= $category['id'] === $book['category'] ? 'selected' : '' ?>><?= $category['name'] ?></option>
+                    <option 
+                      value="<?= $category['name'] ?>" <?= $category['name'] === $book['category'] ? 'selected' : '' ?>><?= $category['name'] ?>
+                    </option>
                   <?php endforeach; ?>
                 </select>
               </div>
