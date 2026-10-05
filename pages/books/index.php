@@ -78,7 +78,7 @@ $activeMenu = 'books';
                   <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
                   <td>
                     <div class="chip-list">
-                      <span class="chip"><?= $book['authors'][0] ?></span>
+                      <span class="chip"><?= implode(', ', $book['authors']) ?></span>
                     </div>
                   </td>
                   <td><?= $book['stock'] ?></td>
