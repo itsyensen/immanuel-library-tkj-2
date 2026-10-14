@@ -1,7 +1,7 @@
 <?php
 
-function getCategories() {
-  
+function getCategories()
+{
   $categories = [
     ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",        "total_books" => 3],
     ["id" => 2, "name" => "Sains",     "description" => "Buku ilmu pengetahuan alam",      "total_books" => 0],
@@ -10,19 +10,15 @@ function getCategories() {
   ];
 
   return $categories;
-
 }
 
-function getCategory() {
+function getCategory()
+{
   $category = [
-    "id" => 1, 
-    "name" => "Fiksi",     
-    "description" => "Novel dan cerita rekaan",        
-    "total_books" => 3
-    ];
+    "id"          => 1,
+    "name"        => "Fiksi",
+    "description" => "Novel dan cerita rekaan",
+  ];
 
-    return $category;
+  return $category;
 }
-
-?>
-

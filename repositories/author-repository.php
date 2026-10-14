@@ -1,7 +1,7 @@
 <?php
 
-function getAuthors() {
-
+function getAuthors()
+{
   $authors = [
     ["id" => 1, "name" => "Andrea Hirata",          "total_books" => 1],
     ["id" => 2, "name" => "Tere Liye",               "total_books" => 1],
@@ -11,20 +11,15 @@ function getAuthors() {
   ];
 
   return $authors;
-
 }
 
-function getAuthor() {
-   $author = [
-    "id" => 1,
+function getAuthor()
+{
+  $author = [
+    "id"   => 1,
     "name" => "Andrea Hirata",
-    "bio" => "Penulis asal Belitung, dikenal lewat novel Laskar Pelangi.",
+    "bio"  => "Penulis asal Belitung, dikenal lewat novel Laskar Pelangi.",
   ];
 
-    return $author;
-    
+  return $author;
 }
-
-
-
-?>

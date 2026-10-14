@@ -1,5 +1,10 @@
 <?php
-$activeMenu = 'categories';
+require_once __DIR__ . "/../../repositories/category-repository.php";
+
+$categories = getCategories();
+
+$pageTitle = "Manajemen Kategori";
+$pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
 ?>
 
 <!DOCTYPE html>
@@ -11,25 +16,15 @@ $activeMenu = 'categories';
   <link rel="stylesheet" href="../../styles/categories/index.css">
 </head>
 <body>
-  <?php
-  require_once __DIR__ . '/../../repositories/category-repository.php';
-  $categories = getCategories();
-  ?>
   <div class="app-shell">
-  
-  <?php require_once __DIR__ . '/../../components/admin/sidebar.php'; ?>
+  <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
 
     <main class="app-main">
-      
-      <?php
-      $pageTitle = "Manajemen Kategori";
-      $pageSubtitle = "Kelola kategori untuk mengelompokkan buku";
-      require_once __DIR__ . '/../../components/admin/topbar.php';
-      ?>
+    <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
 
       <div class="app-content">
         <div class="toolbar">
-          <form method="get" action="" class="toolbar-filters">
+          <form method="" action="" class="toolbar-filters">
             <div class="search-box">
               <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
               <input type="text" name="search" class="search-input" placeholder="Cari nama kategori...">
@@ -50,8 +45,7 @@ $activeMenu = 'categories';
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($categories as $category) : ?>
-
+              <?php foreach ($categories as $category): ?>
                 <tr>
                   <td>
                     <div class="cell-primary">
@@ -64,14 +58,12 @@ $activeMenu = 'categories';
                   <td>
                     <div class="cell-actions">
                       <a href="edit.php?id=<?= $category['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                      <a href="../../actions/categories/destroy.php?id=<?= $category['id'] ?>" 
-                         onclick="return confirm('Yakin mau hapus kategori ini?')" 
-                         class="btn btn-danger btn-sm">Hapus</a>
+                      <a href="../../actions/categories/destroy.php?id=<?= $category['id'] ?>" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Yakin ingin menghapus kategori ini?')">Hapus</a>
                     </div>
                   </td>
                 </tr>
-
-              <?php endforeach; ?>
+              <?php endforeach ?>
             </tbody>
           </table>
         </div>

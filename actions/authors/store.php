@@ -1,9 +1,9 @@
 <?php
+if (isset($_POST['store']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $name = $_POST['name'];
+    $bio = $_POST['bio'];
 
-if(isset($_POST['store']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
-
-  print_r($_POST);
-
+    print_r($_POST);
 }
 
 ?>

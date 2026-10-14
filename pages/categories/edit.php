@@ -1,3 +1,12 @@
+<?php
+require_once __DIR__ . "/../../repositories/category-repository.php";
+
+$category = getCategory();
+
+$pageTitle = "Edit Kategori";
+$pageSubtitle = "Perbarui data kategori";
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,24 +16,14 @@
   <link rel="stylesheet" href="../../styles/categories/edit.css">
 </head>
 <body>
-  <?php
-  require_once __DIR__ . '/../../repositories/category-repository.php';
-  $category = getCategory();
-  ?>
   <div class="app-shell">
-
-    <?php require_once __DIR__ . '/../../components/admin/sidebar.php'; ?>
+  <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
 
     <main class="app-main">
-      
-    <?php
-    $pageTitle = "Edit Kategori";
-    $pageSubtitle = "Perbarui data kategori";
-    require_once __DIR__ . '/../../components/admin/topbar.php';
-    ?>
+    <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
 
       <div class="app-content">
-        <form method="post" action="../../actions/categories/update.php">
+        <form method="POST" action="../../actions/categories/update.php">
           <input type="hidden" name="id" value="<?= $category['id'] ?>">
           <div class="form-card">
             <div class="form-section-title">Data Kategori</div>
@@ -39,7 +38,7 @@
 
             <div class="form-actions">
               <a href="index.php" class="btn btn-outline">Batal</a>
-              <button name="update" type="submit" class="btn btn-primary">Simpan Perubahan</button>
+              <button type="submit" name="update" class="btn btn-primary">Simpan Perubahan</button>
             </div>
           </div>
         </form>

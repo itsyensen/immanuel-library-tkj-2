@@ -1,5 +1,10 @@
 <?php
-$activeMenu = 'books';
+require_once __DIR__ . "/../../repositories/book-repository.php";
+
+$books = getBooks();
+
+$pageTitle = "Manajemen Buku";
+$pageSubtitle = "Kelola data buku, kategori, dan penulis";
 ?>
 
 <!DOCTYPE html>
@@ -13,31 +18,23 @@ $activeMenu = 'books';
 </head>
 
 <body>
-  <?php
-  require_once('../../repositories/book-repository.php');
-  $books = getBooks();
-  ?>
-
   <div class="app-shell">
-
-    <?php require_once __DIR__ . '/../../components/admin/sidebar.php'; ?>
+    <?php require_once __DIR__ . "/../../components/admin/sidebar.php" ?>
 
     <main class="app-main">
-
-      <?php
-      $pageTitle = "Manajemen Buku";
-      $pageSubtitle = "Kelola data buku, kategori, dan penulis";
-      require_once __DIR__ . '/../../components/admin/topbar.php';
-      ?>
+      <?php require_once __DIR__ . "/../../components/admin/topbar.php" ?>
 
       <div class="app-content">
         <div class="toolbar">
-          <form method="get" action="" class="toolbar-filters">
+          <form method="" action="" class="toolbar-filters">
             <div class="search-box">
-              ...
+              <svg class="icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
               <input type="text" name="search" class="search-input" placeholder="Cari judul buku...">
             </div>
-
             <select name="category" class="filter-select">
               <option value="">Semua Kategori</option>
               <option value="Fiksi">Fiksi</option>
@@ -45,7 +42,6 @@ $activeMenu = 'books';
               <option value="Sejarah">Sejarah</option>
               <option value="Teknologi">Teknologi</option>
             </select>
-
             <button type="submit" class="btn btn-outline btn-sm">Cari</button>
           </form>
           <a href="create.php" class="btn btn-primary">+ Tambah Buku</a>
@@ -63,7 +59,7 @@ $activeMenu = 'books';
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($books as $book): ?>
+              <?php foreach ($books as $index => $book): ?>
                 <tr>
                   <td>
                     <div class="cell-primary">
@@ -78,19 +74,23 @@ $activeMenu = 'books';
                   <td><span class="badge badge-muted"><?= $book['category'] ?></span></td>
                   <td>
                     <div class="chip-list">
-                      <span class="chip"><?= implode(', ', $book['authors']) ?></span>
+                      <?php foreach ($book['authors'] as $author): ?>
+                        <span class="chip">
+                          <?= $author ?>
+                        </span>
+                      <?php endforeach ?>
                     </div>
                   </td>
                   <td><?= $book['stock'] ?></td>
                   <td>
                     <div class="cell-actions">
                       <a href="edit.php?id=<?= $book['id'] ?>" class="btn btn-outline btn-sm">Edit</a>
-                      <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>"
-                        onclick="return confirm('Yakin mau hapus buku ini?')" class="btn btn-danger btn-sm">Hapus</a>
+                      <a href="../../actions/books/destroy.php?id=<?= $book['id'] ?>" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Yakin ingin menghapus buku ini?')">Hapus</a>
                     </div>
                   </td>
                 </tr>
-              <?php endforeach; ?>
+              <?php endforeach ?>
             </tbody>
           </table>
         </div>

@@ -1,7 +1,7 @@
 <?php
 
-function getBooks() {
-
+function getBooks()
+{
   $books = [
     [
       "id" => 1,
@@ -46,22 +46,22 @@ function getBooks() {
   ];
 
   return $books;
-
 }
 
-function getBook() {
-  
+function getBook()
+{
+
   $book = [
     "id" => 5,
     "title" => "Antologi Rasa Nusantara",
     "isbn" => "978-602-1234-56-7",
     "year" => 2021,
     "stock" => 4,
+    "category_id" => 1,
     "category" => "Fiksi",
     "description" => "Kumpulan puisi dan cerita pendek dari berbagai penulis Nusantara.",
+    "author_ids" => [4, 5],
     "authors" => ["Pramoedya Ananta Toer", "Sapardi Djoko Damono"],
   ];
-
   return $book;
-  
 }

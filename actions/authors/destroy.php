@@ -1,12 +1,8 @@
 <?php
+if (isset($_GET['id']) && $_SERVER['REQUEST_METHOD'] === "GET") {
+    $id = $_GET['id'];
 
-if (isset($_GET['id']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-   $id = $_GET['id'];
-    echo "Penulis pada ID $id sudah di hapus.";
-    echo "<br>";
-    echo "<a href='../../pages/authors/index.php'>Kembali ke daftar penulis</a>";
-} else {
-    echo "ID tidak ditemukan.";
+    echo "Penulis dengan id " . htmlspecialchars($id) . " berhasil dihapus.";
 }
 
 ?>

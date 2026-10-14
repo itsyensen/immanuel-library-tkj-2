@@ -1,7 +1,6 @@
-
 <?php
 $title = "Beranda - Immanuel Library";
-$activeMenu = 'home';
+
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +10,13 @@ $activeMenu = 'home';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <?= $title; ?>
+    <?= $title ?>
   </title>
   <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
-
-  <?php require_once __DIR__ . '/components/landing/header.php'; ?>
+  <?php require_once __DIR__ . "/components/landing/header.php" ?>
 
   <!-- ============ HERO ============ -->
   <section class="hero">
@@ -105,9 +103,7 @@ $activeMenu = 'home';
       </div>
     </div>
   </section>
-  
-  <?php require_once __DIR__ . '/components/landing/footer.php'; ?>
-
+  <?php require_once __DIR__ . "/components/landing/footer.php" ?>
 </body>
 
 </html>

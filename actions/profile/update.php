@@ -1,9 +1,12 @@
 <?php
+if (isset($_POST['update']) && $_SERVER['REQUEST_METHOD'] === "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $bio = $_POST['bio'];
 
-if (isset($_POST['update']) && ($_SERVER['REQUEST_METHOD'] === 'POST')) {
-
-  print_r($_POST);
-
+    print_r($_POST);
 }
 
 ?>
