@@ -1,7 +1,16 @@
 <?php
+require_once __DIR__ . "/../config/database;.php";
 
 function getCategories()
 {
+  global $pdo;
+
+  $query = "SELECT * FROM categories";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute();
+
+  $categories = $stmt->fetchAll();
+
   $categories = [
     ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",        "total_books" => 3],
     ["id" => 2, "name" => "Sains",     "description" => "Buku ilmu pengetahuan alam",      "total_books" => 0],
