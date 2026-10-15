@@ -9,7 +9,7 @@ function getAuthors()
   $stmt = $pdo->prepare($query);
   $stmt->execute();
 
-    $authors = $stmt->fetchAll();
+  $authors = $stmt->fetchAll();
 
     return $authors;
 }
