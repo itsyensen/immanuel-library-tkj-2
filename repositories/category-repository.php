@@ -1,22 +1,15 @@
 <?php
-require_once __DIR__ . "/../config/database;.php";
+require_once __DIR__ . "/../config/database.php";
 
 function getCategories()
 {
   global $pdo;
 
-  $query = "SELECT * FROM categories";
+  $query = "select * from categories";
   $stmt = $pdo->prepare($query);
   $stmt->execute();
 
   $categories = $stmt->fetchAll();
-
-  $categories = [
-    ["id" => 1, "name" => "Fiksi",     "description" => "Novel dan cerita rekaan",        "total_books" => 3],
-    ["id" => 2, "name" => "Sains",     "description" => "Buku ilmu pengetahuan alam",      "total_books" => 0],
-    ["id" => 3, "name" => "Sejarah",   "description" => "Buku sejarah dan biografi",       "total_books" => 1],
-    ["id" => 4, "name" => "Teknologi", "description" => "Buku pemrograman dan teknologi",  "total_books" => 0],
-  ];
 
   return $categories;
 }
@@ -24,10 +17,26 @@ function getCategories()
 function getCategory()
 {
   $category = [
-    "id"          => 1,
-    "name"        => "Fiksi",
+    "id" => 1,
+    "name" => "Fiksi",
     "description" => "Novel dan cerita rekaan",
   ];
 
   return $category;
+}
+
+function isCategoryExists($categoryId)
+{
+  global $pdo;
+
+  $query = "select count(id) from categories where id = :category_id";
+
+  $stmt = $pdo->prepare($query);
+  $stmt->execute([
+    'category_id' => $categoryId
+  ]);
+
+  $isCategoryExists = $stmt->fetchColumn() > 0;
+
+  return $isCategoryExists;
 }
