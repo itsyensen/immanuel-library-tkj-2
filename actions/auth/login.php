@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once __DIR__ . "/../../middleware/auth.php";
+requireGuest();
 require_once __DIR__ . "/../../config/database.php";
 require_once __DIR__ . "/../../validations/auth-validation.php";
 require_once __DIR__ . "/../../repositories/user-repository.php";
@@ -12,7 +13,7 @@ if (isset($_POST['login']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (count($errors) === 0) {
             $user = getUserByEmail($request['email']);
-            if (!$user && !password_verify($request['password'], $user['password'])) {
+            if (!$user || !password_verify($request['password'], $user['password'])) {
                 $errors['login'] = "Email atau Kata Sandi salah";
             }
         }
