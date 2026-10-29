@@ -1,59 +1,26 @@
 <?php
-const LOGIN_URL = '/pages/auth/login.php';
-const HOME_URL = '/pages/books/index.php';
-const FORBIDDEN_URL = '/pages/errors/403.php';
+require_once __DIR__ . "/../../middleware/auth.php";
 
-function startSession()
-{
-    if (session_status() === PHP_SESSION_NONE) {
-        session_start();
-    }
-}
+requireAuth();
+http_response_code(403);
+?>
 
-function isLoggedIn()
-{
-    startSession();
+<!DOCTYPE html>
+<html lang="id">
 
-    return isset($_SESSION['user']['id']);
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akses Ditolak - Perpustakaan Digital</title>
+  <link rel="stylesheet" href="../../styles/base.css">
+</head>
 
-function getAuthUser()
-{
-    startSession();
+<body style="display:flex; min-height:100vh; align-items:center; justify-content:center; text-align:center;">
+  <div>
+    <h1 style="font-family: var(--font-display); font-size: 4rem;">403</h1>
+    <p style="margin: 8px 0 20px; color: var(--ink-soft);">Anda tidak memiliki izin untuk mengakses halaman ini.</p>
+    <a href="../books/index.php" class="btn btn-primary">Kembali ke Beranda</a>
+  </div>
+</body>
 
-    return $_SESSION['user'] ?? null;
-}
-
-function hasRole(array $roles)
-{
-    $user = getAuthUser();
-
-    return $user !== null && in_array($user['role'], $roles, true);
-}
-
-function requireAuth()
-{
-    if (!isLoggedIn()) {
-        $_SESSION['errors'] = ['login' => "Silakan login terlebih dahulu"];
-
-        header('Location: ' . LOGIN_URL);
-        exit;
-    }
-}
-function requireRole(array $roles)
-{
-    requireAuth();
-
-    if (!hasRole($roles)) {
-        header('Location: ' . FORBIDDEN_URL);
-        exit;
-    }
-}
-
-function requireGuest()
-{
-    if (isLoggedIn()) {
-        header('Location: ' . HOME_URL);
-        exit;
-    }
-}
+</html>
